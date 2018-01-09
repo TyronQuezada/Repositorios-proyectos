@@ -13,7 +13,33 @@
     <script src="js/jquery.js"></script>
 <script>
 $(document).ready(function() {
+	$("#entrar").click(function(){
+	var user = $("#user").val();
+	var pass = $("#pass").val();
+		
+		if(user=="" || pass==""){			
+			alertify.alert('Alerta!!', 'Debe llenar los campos', function(){ alertify.error('Debe llenar el campo <br> usuario y password'); });
+		}else{
+			
+			var url = "php/index.php";
+			$.ajax({
+				   type: "POST",
+				   url: url,
+				   data: "user="+user+"&pass="+pass,				   
+				   success: function(data)
+				   {
+					   if(data==0){
+						   alert('error');
+						   $('#user').focus();
+					   }else{
+						   //$("#respuesta").html(data);
+						   alert('Contraseña modificada correctamente');
 
+					   }
+				   }
+			});			
+		}	
+	});	
 });
 
 </script>
