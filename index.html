@@ -25,7 +25,8 @@ $(document).ready(function() {
 			$.ajax({
 				   type: "POST",
 				   url: url,
-				   data: "user="+user+"&pass="+pass,				   
+				   data: {'user': user,
+					  'pass': pass},				   
 				   success: function(data)
 				   {
 					   if(data==0){
